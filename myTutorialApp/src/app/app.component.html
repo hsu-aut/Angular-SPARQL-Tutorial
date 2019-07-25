@@ -1,0 +1,30 @@
+<!--The content below is only a placeholder and can be replaced.-->
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" [routerLink]="['/']"> Angular-SPARQL-Tutorial</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/']">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/process']">Process Review</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/bootstrapTemplates']">Bootsrap HTML templates</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="https://github.com/ConstantinHildebrandt/Angular-SPARQL-Tutorial">Where is this
+          tutorial explained?</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+<div class="container-fluid mt-2">
+  <router-outlet></router-outlet>
+</div>

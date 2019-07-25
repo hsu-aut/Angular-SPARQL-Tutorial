@@ -1,0 +1,106 @@
+<div class="card text-center">
+  <div class="card-header">
+    Hello World!
+  </div>
+  <div class="card-body">
+    <h5 class="card-title"> The Angular-SPARQL-Tutorial </h5>
+    <p class="card-text">This tutorial intends to enable you to build an easy Angular app, which can query a
+      triple store (here: GrapDB), perform operations based on the retrieved data and to visualize this data to a
+      user. Hereby, you will learn some basics on how to program a web-App with the Angular framework.
+    </p>
+    <a [routerLink]="['/']" class="btn btn-primary"> Show me the goal! </a>
+  </div>
+</div>
+
+<div class="card bg-light h-100">
+  <div class="card-header">Lessons learned 1</div>
+  <div class="card-body">
+    <h5 class="card-title">How do I create, style and program an Angular app?</h5>
+    <p class="card-text">You will learn how to create an Angular App from scratch. Furthermore, you will learn how
+      to use bootstrap in you App design in order to style your HTML in a very easy and efficient way. Lastly, you
+      will learn how to create an interactiv app that is able to support a user based on the interaction with the
+      app.</p>
+  </div>
+</div>
+
+<div class="card bg-light h-100">
+  <div class="card-header">Lessons learned 2</div>
+  <div class="card-body">
+    <h5 class="card-title">How do I include RDF/OWL data from GraphDB in my app?</h5>
+    <p class="card-text">Build an interactive app is one thing, to build an Engineering tool another. Engineering
+      tools have to have the ability to interact with Engineering or machine data. In this tutorial, you will
+      learn how to query RDF/OWL data from a triple store and how to do operations on the returns. Furthermore,
+      you
+      will learn how to include this data in your app. Usually, the execution of queries is done by a backend.
+      In order to provide a simple and easy start, the queries will be executed by Angular. However, this can be
+      easily
+      changed when switching to productive mode.
+    </p>
+  </div>
+</div>
+
+<div class="form-group col-sm">
+  <label> myDropdown </label>
+  <select name="myDropdown" class="form-control">
+    <option value=null selected hidden></option>
+    <option> myDummyOption </option>
+  </select>
+</div>
+<div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <span class="input-group-text alert-success">more then +/-</span>
+  </div>
+  <input type="text" class="form-control">
+  <div class="input-group-append">
+    <span class="input-group-text alert-success">%</span>
+  </div>
+</div>
+<div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <span class="input-group-text alert-warning">more then +/-</span>
+  </div>
+  <input type="text" class="form-control">
+  <div class="input-group-append">
+    <span class="input-group-text alert-warning">%</span>
+  </div>
+</div>
+<div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <span class="input-group-text alert-danger">more then +/-</span>
+  </div>
+  <input type="text" class="form-control">
+  <div class="input-group-append">
+    <span class="input-group-text alert-danger">%</span>
+  </div>
+</div>
+<button class="btn btn-secondary" type="button"> My small dummy button </button>
+
+<button class="col btn btn-secondary mx-3" type="button"> My big dummy button </button>
+
+<div class="d-flex justify-content-center">
+  <div class="spinner-grow" style="width: 4rem; height: 4rem;" role="status">
+    <span class="sr-only">Loading...</span>
+  </div>
+</div>
+
+<div class="row align-items-center px-sm-2" *ngIf="myDummyTable.length!=0">
+  <!-- table -->
+  <table class="table table-hover table-sm" style="cursor: pointer">
+    <thead>
+      <tr>
+        <!-- take first result binding and iterate over keys, these keys are table columns -->
+        <th *ngFor="let col of keys(myDummyTable[0])" scope="col">{{col}} </th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- one row for each binding -->
+      <tr *ngFor="let tableRow of myDummyTable">
+        <!-- one entry for each key in each binding -->
+        <td
+          [ngClass]="{'alert alert-danger': tableRow[x] == 'alert', 'alert alert-warning': tableRow[x] == 'warning', 'alert alert-success': tableRow[x] == 'ok'}"
+          *ngFor="let x of keys(tableRow)">
+          {{tableRow[x]}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
