@@ -74,31 +74,9 @@ export class ProcessReviewComponent implements OnInit {
   }
 
   checkData(table) {
-    for (let row = 0; row < table.length; row++) {
-      let nominalTemp = table[row].NominalTemperatureHC1Value;
-      let actualTemp = table[row].ActualTemperatureHC1Value;
-      let nominalPressure = table[row].NominalPressureValue;
-      let actualPressure = table[row].ActualPressureValue;
+    // for each row of the table, check the conditions of nominal and actual value
+    // if certain condition is met, set the row "TemperatureCheck" or "PressureCheck" to 'ok', 'warning' or 'danger'
 
-      if (nominalTemp == 0 || actualTemp == 0) {
-        table[row].TemperatureCheck = '-';
-      } else if (Math.abs(1 - (nominalTemp / actualTemp)) * 100 <= this.valueOK) {
-        table[row].TemperatureCheck = 'ok';
-      } else if (Math.abs(1 - (nominalTemp / actualTemp)) * 100 <= this.valueWarning) {
-        table[row].TemperatureCheck = 'warning';
-      } else {
-        table[row].TemperatureCheck = 'alert';
-      }
-      if (nominalPressure == 0 || actualPressure == 0) {
-        table[row].PressureCheck = '-';
-      } else if (Math.abs(1 - (nominalPressure / actualPressure)) * 100 <= this.valueOK) {
-        table[row].PressureCheck = 'ok';
-      } else if (Math.abs(1 - (nominalPressure / actualPressure)) * 100 <= this.valueWarning) {
-        table[row].PressureCheck = 'warning';
-      } else {
-        table[row].PressureCheck = 'alert';
-      }
-    }
     return table;
   }
 }
