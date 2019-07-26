@@ -9,9 +9,7 @@ import { RdfDataService } from '../services/rdf-data.service'
 })
 export class ProcessReviewComponent implements OnInit {
 
-  constructor(
-    private dataService: RdfDataService
-  ) { }
+  constructor( ) { }
 
   ngOnInit() {
   }
