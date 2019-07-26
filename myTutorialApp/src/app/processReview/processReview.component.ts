@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { RdfDataService } from '../services/rdf-data.service'
 
 
 @Component({
@@ -10,11 +9,6 @@ import { RdfDataService } from '../services/rdf-data.service'
 export class ProcessReviewComponent implements OnInit {
   // util
   keys = Object.keys;
-  _loaderShow: boolean = false;
-
-  // legend data
-  valueOK: number = 1;
-  valueWarning: number = 5;
 
   // dropdown selection
   selectedMachine: string;
@@ -30,75 +24,34 @@ export class ProcessReviewComponent implements OnInit {
   processDataTable: Array<Object> = [];
   message: string;
 
-  constructor(
-    private dataService: RdfDataService
-  ) { }
+  // dummy data
+  dummyMachines: Array<string> = ["Machine1", "Machine2", "Machine3"];
+  machine1Processes: Array<string> = ["PartLogistics", "Shipping"];
+  machine1OrderNumbers: Array<string> = ["M1ON123", "M1ON456", "M1ON789"];
+  machine2Processes: Array<string> = ["Pre-Processing", "Processing"];
+  machine2OrderNumbers: Array<string> = ["M2ON123", "M2ON456", "M2ON789"];
+  myDummyTable: Array<Object> = [
+    {myDummyValue1: "1", myDummyValue2: "2", myDummyValue3: "3"},
+    {myDummyValue1: "2", myDummyValue2: "3", myDummyValue3: "4"},
+    {myDummyValue1: "3", myDummyValue2: "4", myDummyValue3: "5"},
+  ]
+
+  constructor() { }
 
   ngOnInit() {
-    this.dataService.getMachines().subscribe((data: any) => {
-      this.machines = data;
-    });
+    // assign the dummy machines to the machine dropdown!
   }
 
   getOrderNumber(selectedMachine: string) {
-    if (selectedMachine) {
-      this.dataService.getOrders(selectedMachine).subscribe((data: any) => {
-        this.orderNumbers = data;
-      });
-    }
+    // assign dummy order numbers to dropdown based on selectedMachine
   }
 
   getProcesses(selectedMachine: string, selectOrderNumber: string) {
-    if (selectedMachine && selectOrderNumber) {
-      this.dataService.getProcesses(selectedMachine, selectOrderNumber).subscribe((data: any) => {
-        this.processes = data;
-      });
-    }
+    // assign dummy processes to dropdown based on selected machine and selected order number 
   }
 
   getProcessData(selectedProcess: string) {
-    if (selectedProcess) {
-      this._loaderShow = true;
-      this.dataService.getProcessData(selectedProcess).subscribe((data: any) => {
-        this._loaderShow = false;
-        if (data.length != 0) {
-          this.processDataTable = data;
-          // this.processDataTable = this.checkData(this.processDataTable);
-          console.log(this.processDataTable)
-          this.message = undefined;
-        } else {
-          this.message = "There is no process data available.";
-        }
-      });
-    }
+    // just assign the dummy data to the table in any case
   }
 
-  checkData(table) {
-    for (let row = 0; row < table.length; row++) {
-      let nominalTemp = table[row].NominalTemperatureHC1Value;
-      let actualTemp = table[row].ActualTemperatureHC1Value;
-      let nominalPressure = table[row].NominalPressureValue;
-      let actualPressure = table[row].ActualPressureValue;
-
-      if (nominalTemp == 0 || actualTemp == 0) {
-        table[row].TemperatureCheck = '-';
-      } else if (Math.abs(1 - (nominalTemp / actualTemp)) * 100 <= this.valueOK) {
-        table[row].TemperatureCheck = 'ok';
-      } else if (Math.abs(1 - (nominalTemp / actualTemp)) * 100 <= this.valueWarning) {
-        table[row].TemperatureCheck = 'warning';
-      } else {
-        table[row].TemperatureCheck = 'alert';
-      }
-      if (nominalPressure == 0 || actualPressure == 0) {
-        table[row].PressureCheck = '-';
-      } else if (Math.abs(1 - (nominalPressure / actualPressure)) * 100 <= this.valueOK) {
-        table[row].PressureCheck = 'ok';
-      } else if (Math.abs(1 - (nominalPressure / actualPressure)) * 100 <= this.valueWarning) {
-        table[row].PressureCheck = 'warning';
-      } else {
-        table[row].PressureCheck = 'alert';
-      }
-    }
-    return table;
-  }
 }

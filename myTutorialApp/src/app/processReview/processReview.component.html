@@ -7,36 +7,25 @@
         <div class="row">
           <div class="form-group col-sm">
             <label> Machine </label>
-            <select [(ngModel)]="selectedMachine" name="selectedMachine" class="form-control"
-              (click)="getOrderNumber(selectedMachine)">
+            <select name="selectedMachine" class="form-control">
               <option value=null selected hidden></option>
-              <option *ngFor='let x of machines'>
-                {{x}}
-              </option>
             </select>
           </div>
           <div class="form-group col-sm">
             <label> Order number </label>
-            <select [(ngModel)]="selectedOrderNumber" name="selectedOrderNumber" class="form-control"
-              (click)="getProcesses(selectedMachine, selectedOrderNumber)">
+            <select name="selectedOrderNumber" class="form-control">
               <option value=null selected hidden></option>
-              <option *ngFor='let x of orderNumbers'>
-                {{x}}
-              </option>
             </select>
           </div>
           <div class="form-group col-sm">
             <label> Process </label>
-            <select [(ngModel)]="selectedProcess" name="selectedProcess" class="form-control">
+            <select name="selectedProcess" class="form-control">
               <option value=null selected hidden></option>
-              <option *ngFor='let x of processes'>
-                {{x}}
-              </option>
             </select>
           </div>
           <div class="form-group col-sm-3 align-self-end">
             <div class="input-group-append">
-              <button class="btn btn-secondary" type="button" (click)="getProcessData(selectedProcess)">Get process
+              <button class="btn btn-secondary" type="button">Get process
                 data</button>
             </div>
           </div>
@@ -55,7 +44,7 @@
               <div class="input-group-prepend">
                 <span class="input-group-text alert-success">less then +/-</span>
               </div>
-              <input [(ngModel)]="valueOK" type="text" class="form-control">
+              <input type="text" class="form-control">
               <div class="input-group-append">
                 <span class="input-group-text alert-success">%</span>
               </div>
@@ -66,7 +55,7 @@
               <div class="input-group-prepend">
                 <span class="input-group-text alert-warning">less then +/-</span>
               </div>
-              <input [(ngModel)]="valueWarning" type="text" class="form-control">
+              <input type="text" class="form-control">
               <div class="input-group-append">
                 <span class="input-group-text alert-warning">%</span>
               </div>
@@ -77,7 +66,7 @@
               <div class="input-group-prepend">
                 <span class="input-group-text alert-danger">more then +/-</span>
               </div>
-              <input [(ngModel)]="valueWarning" type="text" class="form-control">
+              <input type="text" class="form-control">
               <div class="input-group-append">
                 <span class="input-group-text alert-danger">%</span>
               </div>
@@ -85,7 +74,7 @@
           </div>
         </div>
         <div class="row justify-content-center">
-            <button class="col btn btn-secondary mx-3" type="button" (click)="checkData(processDataTable)">Apply to data</button>
+            <button class="col btn btn-secondary mx-3" type="button">Apply to data</button>
         </div>
       </div>
     </div>
@@ -117,9 +106,7 @@
               <!-- one row for each binding -->
               <tr *ngFor="let tableRow of processDataTable">
                 <!-- one entry for each key in each binding -->
-                <td
-                  [ngClass]="{'alert alert-danger': tableRow[x] == 'alert', 'alert alert-warning': tableRow[x] == 'warning', 'alert alert-success': tableRow[x] == 'ok'}"
-                  *ngFor="let x of keys(tableRow)">
+                <td *ngFor="let x of keys(tableRow)">
                   {{tableRow[x]}}</td>
               </tr>
             </tbody>
