@@ -27,8 +27,8 @@ This tutorial requires a local (or remote) graph database. Currently, only Graph
 ### Git client
 
 This tutorial is based on 4 steps, starting from basic HTML styling and ending with an analysis of RDF data in your app. In order to have everybody on the same page with the start of every new step, you can download a version (branch) for each step. To ease this process, install the github client on your device.<br>
-1.) Install the github desktoip client from `https://desktop.github.com/`
-2.) After having it installed, add this repository `https://github.com/ConstantinHildebrandt/Angular-SPARQL-Tutorial`
+1.) Install the github desktop client from `https://desktop.github.com/`<br>
+2.) After having it installed, add the tutorials´ repository `https://github.com/ConstantinHildebrandt/Angular-SPARQL-Tutorial`<br>
 3.) Fetch the last commit of the branch `0-HTML-Styling`, this is the starting point of the tutorial
 
 ### Install dependencies
