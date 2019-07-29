@@ -35,9 +35,11 @@ This tutorial is based on 4 steps, starting from basic HTML styling and ending w
 
 Now you should have all the relevant files of the tutorial on your device. In Visual Studio Code, open a terminal in the folder `myTutorialApp`. Type the following command to build the dependencies:
 ```
+cd myTutorialApp
 npm install
 ```
 This will install all relevant node modules that are required by the tutorial app. Afterwards, you can start the app via:
 ```
+cd myTutorialApp
 ng serve
 ```
